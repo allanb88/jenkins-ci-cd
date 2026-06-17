@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+  name: prueba-jenkins
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: prueba-jenkins
+  template:
+    metadata:
+      labels:
+        name: prueba-jenkins
+    spec:
+      containers:
+      - name: prueba-jenkins
+        image: allanbs88/prueba-jenkins
+        ports:
+        - containerPort: 80
+          name: http
