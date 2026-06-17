@@ -140,7 +140,7 @@ Abre: http://localhost:8080
 Ve a: **Manage Jenkins → Plugins → Available plugins**
 
 Busca e instala:
-- `Docker Pipeline` — permite usar `docker.build()` y `docker.withRegistry()` en Jenkinsfile
+- ` ` — permite usar `docker.build()` y `docker.withRegistry()` en Jenkinsfile
 - `GitHub` — integración con webhooks de GitHub (ya suele venir instalado)
 - `Pipeline` — ya instalado por defecto
 
