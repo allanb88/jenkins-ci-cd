@@ -8,14 +8,24 @@ services:
     ports:
       - "8080:8080"    # Jenkins UI
       - "50000:50000"  # Jenkins agent port (no necesario para este ejercicio)
+    security_opt:
+      - label:disable
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock   # Docker-out-of-Docker
-      - ~/.kube:/var/jenkins_home/.kube:rw           # kubectl acceso a minikube
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.kube:/var/jenkins_home/.kube:rw
+      - /home/allanb/.minikube:/home/allanb/.minikube:ro
     environment:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - KUBECONFIG=/var/jenkins_home/.kube/config
+    networks:
+      - default
+      - minikube
 
 volumes:
   jenkins_home:
     name: jenkins_home
+
+networks:
+  minikube:
+    external: true
